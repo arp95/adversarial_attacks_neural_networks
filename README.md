@@ -40,5 +40,6 @@ To run the jupyter notebooks, use Python 3. Standard libraries like Numpy and Py
 
 ### Credits
 The following links were helpful for this project:
-1. https://www.youtube.com/channel/UC88RC_4egFjV9jfjBHwDuvg
-2. https://github.com/pytorch/tutorials
+1. https://pytorch.org/tutorials/beginner/fgsm_tutorial.html
+2. https://www.youtube.com/channel/UC88RC_4egFjV9jfjBHwDuvg
+3. https://github.com/pytorch/tutorials

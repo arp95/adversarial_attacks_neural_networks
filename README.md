@@ -17,12 +17,12 @@ The data used for this task was CIFAR-10 dataset. The dataset has been divided i
 
 
 ### FGSM Attack
-FGSM is a non-targeted white box attack. The aim of the attack is to ensure the input image is perturbed with noise which makes it to mis-classify the input other than the actual target class. This is done by adding the gradient of the loss function(predicted output and actual class) wrt to the input image to the input image so that it leads to classifying the input to a class other than the actual target class. An example is shown below:
+FGSM is a non-targeted white box attack. The aim of the attack is to ensure the input image is perturbed with noise which makes it to mis-classify the input other than the actual target class. This is done by adding the gradient of the loss function(predicted output and actual class) wrt to the input image to the input image so that it leads to classifying the input to a class other than the actual target class. An example is shown below:<br><br>
 ![Screenshot](adversarial_examples/fgsm.png)
 
 
 ### I-FGSM Attack
-I-FGSM is a targeted white box attack. The aim of the attack is to add noise in the input image so that it can classify the input image to a specific targeted class. This is done by adding the gradient of loss function(predicted output and targeted class rather than the actual class) wrt to the input image to the input image so that it leads to classifying the input to a specific targeted class. An example is shown below:
+I-FGSM is a targeted white box attack. The aim of the attack is to add noise in the input image so that it can classify the input image to a specific targeted class. This is done by adding the gradient of loss function(predicted output and targeted class rather than the actual class) wrt to the input image to the input image so that it leads to classifying the input to a specific targeted class. An example is shown below:<br><br>
 ![Screenshot](adversarial_examples/ifgsm.png)
 
 

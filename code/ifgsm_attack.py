@@ -1,12 +1,12 @@
-# header files needed
+# header files
 import numpy as np
 import torch
 import torch.nn as nn
 import torchvision
 
 
-# FGSM attack code(reference: https://pytorch.org/tutorials/beginner/fgsm_tutorial.html)
-def fgsm_attack(image, epsilon, data_grad):
+# I-FGSM attack code
+def ifgsm_attack(image, epsilon, data_grad):
     sign_data_grad = data_grad.sign()
     perturbed_image = image + epsilon*sign_data_grad
     perturbed_image = torch.clamp(perturbed_image, 0, 1)
@@ -18,6 +18,7 @@ model_path = "/home/arpitdec5/Desktop/adversarial_attacks_neural_networks/code/m
 files = "/home/arpitdec5/Desktop/adversarial_attacks_neural_networks/data/"
 classes_map = {"0": "airplane", "1": "automobile", "2": "bird", "3": "cat", "4": "deer", "5": "dog", "6": "frog", "7": "horse", "8": "ship", "9": "truck"}
 actual_target = torch.tensor([3])
+forced_target = torch.tensor([5])
 
 # transforms
 transforms = torchvision.transforms.Compose([torchvision.transforms.Resize((32, 32)),
@@ -51,23 +52,26 @@ epsilon = 0.25
 for i, (input, target) in enumerate(test_loader):
     input, target = input.to(device), target.to(device)
     input.requires_grad = True
-    output = model(input)
-    _, actual_pred = output.max(1)
+    for iter in range(10):
+        output = model(input)
+        _, actual_pred = output.max(1)
 
-    # loss
-    loss = torch.nn.functional.nll_loss(output, actual_target)
+        # loss
+        loss = -torch.nn.functional.nll_loss(output, forced_target)
         
-    # backward pass
-    model.zero_grad()
-    loss.backward()
-    grad = input.grad.data
+        # backward pass
+        model.zero_grad()
+        loss.backward()
+        grad = input.grad.data
 
-    # fgsm attack
-    fgsm_input = fgsm_attack(input, epsilon, grad)
-    output = model(fgsm_input)
+        # i-fgsm attack
+        ifgsm_input = ifgsm_attack(input, epsilon, grad)
+        input.data = ifgsm_input
+    
+    # run model on input after i-fgsm
+    output = model(input)
 
-    # check fgsm output with actual output
-    fgsm_pred = output.max(1, keepdim=True)[1]
-    if(fgsm_pred.item() != actual_target.item()):
+    # check i-fgsm output with actual output
+    ifgsm_pred = output.max(1, keepdim=True)[1]
+    if(ifgsm_pred.item() == forced_target.item()):
         print("Adversarial example!")
-        #print("Adversarial example: " + classes_map[str(int(fgsm_pred.item()))])

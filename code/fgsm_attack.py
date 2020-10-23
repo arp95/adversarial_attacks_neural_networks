@@ -3,6 +3,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torchvision
+from torchvision.utils import save_image
 
 
 # FGSM attack code(reference: https://pytorch.org/tutorials/beginner/fgsm_tutorial.html)
@@ -65,6 +66,7 @@ for i, (input, target) in enumerate(test_loader):
     # fgsm attack
     fgsm_input = fgsm_attack(input, epsilon, grad)
     output = model(fgsm_input)
+    #save_image(fgsm_input[0], "adversarial_examples/fgsm.png")
 
     # check fgsm output with actual output
     fgsm_pred = output.max(1, keepdim=True)[1]

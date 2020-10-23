@@ -3,6 +3,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torchvision
+from torchvision.utils import save_image
 
 
 # I-FGSM attack code
@@ -70,6 +71,7 @@ for i, (input, target) in enumerate(test_loader):
     
     # run model on input after i-fgsm
     output = model(input)
+    #save_image(input[0], "adversarial_examples/ifgsm.png")
 
     # check i-fgsm output with actual output
     ifgsm_pred = output.max(1, keepdim=True)[1]

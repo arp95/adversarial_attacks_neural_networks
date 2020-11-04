@@ -37,57 +37,62 @@ I-FGSM is a targeted white box attack. The aim of the attack is to add noise in 
 #### Training-Evaluation Results
 The results after using different CNN architectures on CIFAR-10 dataset are given below:
 
-1. <b>ResNet-50(pretrained on ImageNet dataset)</b><br>
+1. <b>ResNet-50(smoothing factor=0.0, epochs=300, lr=0.005, wd=0.001)</b><br>
 
-Training Accuracy = 97.31% and Validation Accuracy = 82.63% (e = 100, lr = 0.001, m = 0.9, bs = 64, wd = 5e-4)<br>
+Validation Accuracy = 89.14%<br>
 
 
-2. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.0, epochs=250, lr=0.001, wd=5e-4)</b><br>
+2. <b>ResNet-50(smoothing factor=0.1, epochs=300, lr=0.005, wd=0.001)</b><br>
+
+Validation Accuracy = 89.00%<br>
+
+
+3. <b>ResNet-50(smoothing factor=0.3, epochs=300, lr=0.005, wd=0.001)</b><br>
+
+Validation Accuracy = 88.03%<br>
+
+
+4. <b>ResNet-50(smoothing factor=0.5, epochs=300, lr=0.005, wd=0.001)</b><br>
+
+Validation Accuracy = 87.62%<br>
+
+
+5. <b>ResNet-50(smoothing factor=0.7, epochs=300, lr=0.005, wd=0.001)</b><br>
+
+Validation Accuracy = 86.37%<br>
+
+
+6. <b>ResNet-50(smoothing factor=0.9, epochs=300, lr=0.005, wd=0.001)</b><br>
+
+Validation Accuracy = 10.59%<br>
+
+
+7. <b>VGG-16(pretrained on ImageNet, smoothing factor=0.0, epochs=250, lr=0.001, wd=5e-4)</b><br>
 
 Validation Accuracy = 89.01%<br>
 
 
-3. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.1, epochs=250, lr=0.001, wd=5e-4)</b><br>
+8. <b>VGG-16(pretrained on ImageNet, smoothing factor=0.1, epochs=250, lr=0.001, wd=5e-4)</b><br>
 
 Validation Accuracy = 89.10%<br>
 
 
-4. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.2, epochs=250, lr=0.001, wd=5e-4)</b><br>
-
-Validation Accuracy = 88.88%<br>
-
-
-5. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.3, epochs=250, lr=0.001, wd=5e-4)</b><br>
+9. <b>VGG-16(pretrained on ImageNet, smoothing factor=0.3, epochs=250, lr=0.001, wd=5e-4)</b><br>
 
 Validation Accuracy = 88.74%<br>
 
 
-6. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.4, epochs=250, lr=0.001, wd=5e-4)</b><br>
-
-Validation Accuracy = 88.67%<br>
-
-
-7. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.5, epochs=250, lr=0.001, wd=5e-4)</b><br>
+10. <b>VGG-16(pretrained on ImageNet, smoothing factor=0.5, epochs=250, lr=0.001, wd=5e-4)</b><br>
 
 Validation Accuracy = 88.45%<br>
 
 
-8. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.6, epochs=250, lr=0.001, wd=5e-4)</b><br>
-
-Validation Accuracy = 88.30%<br>
-
-
-9. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.7, epochs=250, lr=0.001, wd=5e-4)</b><br>
+11. <b>VGG-16(pretrained on ImageNet, smoothing factor=0.7, epochs=250, lr=0.001, wd=5e-4)</b><br>
 
 Validation Accuracy = 87.83%<br>
 
 
-10. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.8, epochs=250, lr=0.001, wd=5e-4)</b><br>
-
-Validation Accuracy = 84.17%<br>
-
-
-11. <b>VGG-16(pretrained on ImageNet dataset, smoothing factor=0.9, epochs=250, lr=0.001, wd=5e-4)</b><br>
+12. <b>VGG-16(pretrained on ImageNet, smoothing factor=0.9, epochs=250, lr=0.001, wd=5e-4)</b><br>
 
 Validation Accuracy = 10.54%<br>
 
